@@ -1,6 +1,6 @@
-import { Task, Status } from "@/types";
+import { Task } from "@/types";
 
-export const getTasksByStatus = (tasks: Task[], status: Status) => {
+export const getTasksByStatus = (tasks: Task[], status: string) => {
   return tasks.filter((task) => task.status === status);
 };
 

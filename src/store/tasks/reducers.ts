@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "@/store/store";
-import { Status, Task } from "@/types";
+import { Task } from "@/types";
 import {
   addTaskRequest,
   addTaskSuccess,
@@ -78,7 +78,7 @@ export const deleteTask =
 export const updateTaskStatus =
   (
     taskId: string,
-    newStatus: Status
+    newStatus: string
   ): ThunkAction<void, RootState, null, Action<string>> =>
   (dispatch) => {
     dispatch(updateTaskStatusRequest(taskId, newStatus));

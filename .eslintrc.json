@@ -1,4 +1,0 @@
-{
-  "plugins": ["next"],
-  "extends": ["@wemake-services/typescript/recommended"]
-}

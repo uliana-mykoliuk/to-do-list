@@ -9,7 +9,7 @@ import { updateTaskStatus } from "@/store/tasks/reducers";
 import EditIcon from "../assets/edit.svg";
 import DeleteIcon from "../assets/delete.svg";
 import { Dispatch } from "redux";
-import { Status, Task } from "@/types";
+import { Task } from "@/types";
 
 const TableView: React.FC = () => {
   const tasks: Task[] = useSelector((state: any) => state.tasks.tasks);
@@ -26,7 +26,7 @@ const TableView: React.FC = () => {
     e: React.ChangeEvent<HTMLSelectElement>,
     task: Task
   ) => {
-    const status = e.target.value as Status;
+    const status = e.target.value as string;
     dispatch(updateTaskStatus(task.id, status));
   };
 

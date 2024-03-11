@@ -1,9 +1,7 @@
-export type Status = "not completed" | "in progress" | "completed";
-
 export type Task = {
   id: string;
   task?: string;
-  status: Status;
+  status: string;
 };
 
 export type BoardSections = {

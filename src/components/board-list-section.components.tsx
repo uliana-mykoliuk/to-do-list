@@ -20,7 +20,7 @@ import { arrayMove } from "@dnd-kit/sortable";
 
 import BoardSection from "./board-section.component";
 import TaskItem from "./task-item.components";
-import { BoardSections, Status, Task } from "@/types";
+import { BoardSections, Task } from "@/types";
 import { getTaskById } from "@/utils/tasks";
 import { findBoardSectionContainer, initializeBoard } from "@/utils/board";
 import { updateTaskStatus } from "@/store/tasks/reducers";
@@ -110,7 +110,7 @@ const BoardSectionList: React.FC = () => {
     );
     const overContainer = findBoardSectionContainer(
       boardSections!,
-      over?.id as Status
+      over?.id as string
     );
 
     if (
