@@ -69,7 +69,7 @@ function AppContainer() {
     setMode((prevMode) => (prevMode === "board" ? "table" : "board"));
   };
 
-  console.log("isEditModalOpen", isEditModalOpen);
+  console.log(taskToUpdate)
 
   return (
     <>

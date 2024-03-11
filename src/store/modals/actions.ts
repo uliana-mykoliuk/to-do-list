@@ -5,13 +5,10 @@ import { Action } from "redux";
 export const openEditModalSuccess = (
   task: Task
 ): Action<string> & {
-  payload: { editTask: Task; editModalOpen: boolean };
+  payload: Task;
 } => ({
   type: types.OPEN_EDIT_MODAL,
-  payload: {
-    editTask: task,
-    editModalOpen: true,
-  },
+  payload: task,
 });
 
 export const closeEditModalSuccess = (): Action<string> & {
@@ -27,13 +24,10 @@ export const closeEditModalSuccess = (): Action<string> & {
 export const openDeleteModalSuccess = (
   taskId: string
 ): Action<string> & {
-  payload: { deleteTaskId: string; deleteModalOpen: boolean };
+  payload: string;
 } => ({
   type: types.OPEN_DELETE_MODAL,
-  payload: {
-    deleteTaskId: taskId,
-    deleteModalOpen: true,
-  },
+  payload: taskId,
 });
 
 export const closeDeleteModalSuccess = (): Action<string> & {
