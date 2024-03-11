@@ -46,7 +46,11 @@ const BoardSectionList: React.FC = () => {
     },
   });
   const keyboardSensor = useSensor(KeyboardSensor);
-  const pointerSensor = useSensor(PointerSensor)
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 10,
+    },
+  });
   const sensors = useSensors(mouseSensor, keyboardSensor, pointerSensor);
 
   const handleDragStart = ({ active }: DragStartEvent) => {
