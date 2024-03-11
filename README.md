@@ -22,5 +22,5 @@ If I had more time I would work on:
 - add search by task text
 ...
   
-There are place for a lot of improvements, I've done everything I could in my free time, also didn't add eslinter because it was easier to make build on netlify without it
+There are place for a lot of improvements, I've done everything I could in my free time, also haven't added eslinter because it was easier to make build on netlify without it
 
