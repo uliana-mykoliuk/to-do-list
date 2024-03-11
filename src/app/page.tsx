@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Provider } from "react-redux";
 
@@ -21,6 +21,7 @@ function AppContainer() {
   const isEditModalOpen = useSelector(
     (state: any) => state.modals.editModalOpen
   );
+  const tasks = useSelector((state: any) => state.tasks.tasks);
   const taskToUpdate = useSelector(
     (state: any) => state.modals.editTask
   ) as Task | null;
@@ -69,8 +70,6 @@ function AppContainer() {
     setMode((prevMode) => (prevMode === "board" ? "table" : "board"));
   };
 
-  console.log(taskToUpdate)
-
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Add Task">
@@ -99,13 +98,39 @@ function AppContainer() {
         </div>
       </Modal>
       <div className="grid container max-w-[1000px] mx-auto px-[12px] md:px-[24px] py-[24px]">
-        <div className="grid gap-y-[16px] sm:flex sm:items-center sm:justify-end mb-[30px] sm:my-[30px]">
-          <Button type="button" onClick={toggleMode} classes="sm:mr-[30px]">
-            Switch to {mode === "board" ? "Table" : "Board"} Mode
-          </Button>
-          <Button type="button" onClick={openModal} classes="">
-            + Add task
-          </Button>
+        <h1 className="text-[32px] font-medium text-center text-[#6528F7]">
+          To Do List
+        </h1>
+        <div className="grid sm:justify-items-center md:justify-items-stretch md:grid-cols-2 gap-y-[16px] items-center mb-[30px]">
+          <div className="flex gap-x-[16px] justify-self-center md:justify-self-start">
+            <div className="flex items-center">
+              Completed tasks: &nbsp;
+              <span className="text-[#6528F7] text-[24px]">
+                {tasks
+                  ? tasks.filter((task: Task) => task.status === "completed")
+                      .length
+                  : 0}
+              </span>
+            </div>
+            <div className="flex items-center">
+              Uncompleted tasks: &nbsp;
+              <span className="text-[#6528F7] text-[24px]">
+                {tasks
+                  ? tasks.filter(
+                      (task: Task) => task.status === "not completed"
+                    ).length
+                  : 0}
+              </span>
+            </div>
+          </div>
+          <div className="grid gap-y-[16px] sm:flex sm:items-center md:justify-self-end">
+            <Button type="button" onClick={toggleMode} classes="sm:mr-[30px]">
+              Switch to {mode === "board" ? "Table" : "Board"} Mode
+            </Button>
+            <Button type="button" onClick={openModal} classes="">
+              + Add task
+            </Button>
+          </div>
         </div>
         {mode === "board" ? <BoardSectionList /> : <TableView />}
       </div>
