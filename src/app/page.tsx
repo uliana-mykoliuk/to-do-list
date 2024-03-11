@@ -69,6 +69,8 @@ function AppContainer() {
     setMode((prevMode) => (prevMode === "board" ? "table" : "board"));
   };
 
+  console.log("isEditModalOpen", isEditModalOpen);
+
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Add Task">
@@ -96,16 +98,12 @@ function AppContainer() {
           </Button>
         </div>
       </Modal>
-      <div className="grid container max-w-[1000px] mx-auto">
-        <div className="flex items-center justify-end">
-          <Button type="button" onClick={toggleMode} classes="mr-[30px]">
+      <div className="grid container max-w-[1000px] mx-auto px-[12px] md:px-[24px] py-[24px]">
+        <div className="grid gap-y-[16px] sm:flex sm:items-center sm:justify-end mb-[30px] sm:my-[30px]">
+          <Button type="button" onClick={toggleMode} classes="sm:mr-[30px]">
             Switch to {mode === "board" ? "Table" : "Board"} Mode
           </Button>
-          <Button
-            type="button"
-            onClick={openModal}
-            classes="justify-self-end my-[30px]"
-          >
+          <Button type="button" onClick={openModal} classes="">
             + Add task
           </Button>
         </div>

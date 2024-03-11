@@ -14,18 +14,18 @@ import {
   DropAnimation,
   defaultDropAnimation,
   MouseSensor,
+  PointerSensor,
 } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 
 import BoardSection from "./board-section.component";
 import TaskItem from "./task-item.components";
-import { BoardSections, Status, Task } from "../types";
+import { BoardSections, Status, Task } from "@/types";
 import { getTaskById } from "@/utils/tasks";
-import { findBoardSectionContainer, initializeBoard } from "../utils/board";
+import { findBoardSectionContainer, initializeBoard } from "@/utils/board";
 import { updateTaskStatus } from "@/store/tasks/reducers";
 
 const BoardSectionList: React.FC = () => {
-  const error = useSelector((state: any) => state.tasks.error);
   const tasks = useSelector((state: any) => state.tasks.tasks);
   const dispatch: Dispatch<any> = useDispatch();
   const [boardSections, setBoardSections] = useState<BoardSections | undefined>(
@@ -46,7 +46,8 @@ const BoardSectionList: React.FC = () => {
     },
   });
   const keyboardSensor = useSensor(KeyboardSensor);
-  const sensors = useSensors(mouseSensor, keyboardSensor);
+  const pointerSensor = useSensor(PointerSensor)
+  const sensors = useSensors(mouseSensor, keyboardSensor, pointerSensor);
 
   const handleDragStart = ({ active }: DragStartEvent) => {
     setActiveTaskId(active.id as string);
@@ -147,7 +148,7 @@ const BoardSectionList: React.FC = () => {
   const task = activeTaskId ? getTaskById(tasks, activeTaskId) : null;
 
   return (
-    <div className="container">
+    <div className="mx-auto container grid ">
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
@@ -155,7 +156,7 @@ const BoardSectionList: React.FC = () => {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <div className="grid grid-cols-3 gap-x-[30px]">
+        <div className="grid md:grid-cols-3 gap-[30px]">
           {boardSections &&
             Object.keys(boardSections).map((boardSectionKey) => (
               <div className="grid" key={boardSectionKey}>

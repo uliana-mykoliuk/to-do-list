@@ -20,7 +20,7 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
   });
 
   return (
-    <div className="bg-[#EDE4FF] rounded-[5px] p-[20px] min-h-[60vh]">
+    <div className="bg-[#EDE4FF] rounded-[5px] p-[20px] md:min-h-[60vh]">
       <h6 className="font-semibold capitalize text-center mb-[16px]">
         {title}
       </h6>

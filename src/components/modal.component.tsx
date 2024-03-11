@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
         className="absolute w-full h-full bg-black opacity-50"
         onClick={onClose}
       />
-      <div className="relative w-full max-w-md bg-white p-8 rounded-lg shadow-md z-50">
+      <div className="relative w-[90%] max-w-md bg-white p-8 rounded-lg shadow-md z-50">
         <h2 className="text-center font-bold mb-4">{title}</h2>
         <button
           type="button"
